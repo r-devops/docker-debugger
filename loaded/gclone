@@ -1,0 +1,18 @@
+#!/bin/bash 
+
+token=$(cat /root/.gittoken 2>/dev/null)
+[ -z "$token" ] && read -p 'Enter GitHub Token: ' token && echo $token >/root/.gittoken
+
+url=$1 
+if [ "$url" != "https.*" ]; then 
+    echo This supports only https 
+    exit 1 
+fi 
+
+git clone $url 2>/dev/null 
+if [ $? -ne 0 ]; then 
+    URL=$(echo $url | sed -e 's|https://||' -e "s|^|https://user:$token@")
+    git clone $URL
+fi 
+
+
