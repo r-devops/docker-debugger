@@ -33,12 +33,13 @@ ADD             k9s /bin
 ADD             helm /bin 
 ADD             kubens /bin 
 ADD             kubectx /bin 
-RUN             chmod +x /bin/kubectl /bin/k9s /bin/helm /bin/kubens /bin/kubectx 
+ADD             aws-auth /bin 
+RUN             chmod +x /bin/kubectl /bin/k9s /bin/helm /bin/kubens /bin/kubectx /bin/aws-auth
 
 COPY            profile.sh /etc/profile.d/profile.sh 
 RUN             chmod +x /etc/profile.d/profile.sh 
 WORKDIR         /root 
 ENTRYPOINT      ["tail" , "-f", "/dev/null"]
 
-RUN             yum install java-17-openjdk-devel -y 
+RUN             yum install java-17-openjdk-devel jq -y 
 

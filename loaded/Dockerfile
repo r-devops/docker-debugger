@@ -22,3 +22,4 @@ RUN             chmod +x /bin/terrafile
 ADD             .bashrc /root/.bashrc 
 ADD             gclone /bin/gclone 
 RUN             chmod +x /bin/gclone 
+ENTRYPOINT 	[ "tail", "-f", "/dev/null" ]
