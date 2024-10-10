@@ -42,6 +42,6 @@ WORKDIR         /root
 ENTRYPOINT      ["tail" , "-f", "/dev/null"]
 
 RUN             yum install java-17-openjdk-devel jq -y 
-RUN             mkdir -p ~/.ssh
-ADD            ssh-config ~/.ssh/config
-RUN             chmod 600 ~/.ssh/config
+RUN             mkdir -p /root/.ssh
+ADD             ssh-config /root/.ssh/config
+RUN             chmod 600 /root/.ssh/config
