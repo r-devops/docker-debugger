@@ -1,4 +1,4 @@
-FROM            dokken/centos-stream-8
+FROM            docker.io/redhat/ubi9
 RUN             yum install epel-release -y
 
 ## Install General Tools 
@@ -8,7 +8,7 @@ RUN             dnf install vim gcc unzip bind-utils git make telnet -y
 RUN             curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && unzip awscliv2.zip && ./aws/install && rm -rf awscliv2.zip aws
 
 ## Ansible 
-RUN             yum install python3.11-devel python3.11-pip -y
+RUN             yum install python3.11-devel python3.11-pip sshpass -y
 RUN             pip3.11 install ansible botocore boto3 python-jenkins
 
 ## DB Tools 
@@ -23,7 +23,7 @@ RUN             curl -L https://downloads.apache.org/kafka/3.5.0/kafka_2.12-3.5.
 RUN             cd /opt && tar -xf kafka_2.12-3.5.0.tgz && mv kafka_2.12-3.5.0 kafka 
 
 ### Hashicorp Tools
-RUN             curl -L -o /etc/yum.repos.d/hashicorp.repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo && dnf install terraform vault -y
+RUN             curl -L -o /etc/yum.repos.d/hashicorp.repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo && dnf install terraform vault packer -y
 ADD             terrafile /bin
 RUN             chmod +x /bin/terrafile
 
@@ -42,4 +42,6 @@ WORKDIR         /root
 ENTRYPOINT      ["tail" , "-f", "/dev/null"]
 
 RUN             yum install java-17-openjdk-devel jq -y 
-
+RUN             mkdir -p ~/.ssh
+COPY            ssh-config ~/.ssh/config
+RUN             chmod 600 ~/.ssh/config
