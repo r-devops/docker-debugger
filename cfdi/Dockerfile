@@ -2,7 +2,7 @@ FROM            docker.io/redhat/ubi9
 RUN             yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm -y
 
 ## Install General Tools 
-RUN             dnf install vim gcc unzip bind-utils git make telnet -y
+RUN             dnf install vim gcc unzip bind-utils git make netcat -y
 
 ## Install AWS CLI
 RUN             curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && unzip awscliv2.zip && ./aws/install && rm -rf awscliv2.zip aws
