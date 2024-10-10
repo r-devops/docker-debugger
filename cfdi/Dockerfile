@@ -15,7 +15,7 @@ RUN             pip3.11 install ansible botocore boto3 python-jenkins
 COPY            mongodb.repo /etc/yum.repos.d/mongodb.repo 
 RUN             yum install mongodb-mongosh -y 
 RUN             dnf install https://download.postgresql.org/pub/repos/yum/reporpms/EL-9-x86_64/pgdg-redhat-repo-latest.noarch.rpm -y 
-RUN             dnf -qy module disable postgresql
+#RUN             dnf -qy module disable postgresql
 RUN             dnf install postgresql13 -y 
 
 ## Kafka 
@@ -23,7 +23,7 @@ RUN             curl -L https://downloads.apache.org/kafka/3.5.0/kafka_2.12-3.5.
 RUN             cd /opt && tar -xf kafka_2.12-3.5.0.tgz && mv kafka_2.12-3.5.0 kafka 
 
 ### Hashicorp Tools
-RUN             curl -L -o /etc/yum.repos.d/hashicorp.repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo && dnf install terraform vault packer -y
+RUN             curl -L -o /etc/yum.repos.d/hashicorp.repo https://rpm.r#eases.hashicorp.com/RHEL/hashicorp.repo && dnf install terraform vault packer -y
 ADD             terrafile /bin
 RUN             chmod +x /bin/terrafile
 
