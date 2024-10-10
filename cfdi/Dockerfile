@@ -19,8 +19,8 @@ RUN             dnf install https://download.postgresql.org/pub/repos/yum/reporp
 RUN             dnf install postgresql13 -y 
 
 ## Kafka 
-RUN             curl -L https://downloads.apache.org/kafka/3.5.0/kafka_2.12-3.5.0.tgz -o /opt/kafka_2.12-3.5.0.tgz 
-RUN             cd /opt && tar -xf kafka_2.12-3.5.0.tgz && mv kafka_2.12-3.5.0 kafka 
+# RUN             curl -L https://downloads.apache.org/kafka/3.5.0/kafka_2.12-3.5.0.tgz -o /opt/kafka_2.12-3.5.0.tgz 
+# RUN             cd /opt && tar -xf kafka_2.12-3.5.0.tgz && mv kafka_2.12-3.5.0 kafka 
 
 ### Hashicorp Tools
 RUN             curl -L -o /etc/yum.repos.d/hashicorp.repo https://rpm.r#eases.hashicorp.com/RHEL/hashicorp.repo && dnf install terraform vault packer -y
