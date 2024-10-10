@@ -23,7 +23,7 @@ RUN             dnf install postgresql13 -y
 # RUN             cd /opt && tar -xf kafka_2.12-3.5.0.tgz && mv kafka_2.12-3.5.0 kafka 
 
 ### Hashicorp Tools
-RUN             curl -L -o /etc/yum.repos.d/hashicorp.repo https://rpm.r#eases.hashicorp.com/RHEL/hashicorp.repo && dnf install terraform vault packer -y
+RUN             curl -L -o /etc/yum.repos.d/hashicorp.repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo && dnf install terraform vault packer -y
 ADD             terrafile /bin
 RUN             chmod +x /bin/terrafile
 
