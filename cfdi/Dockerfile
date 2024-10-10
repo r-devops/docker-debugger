@@ -43,5 +43,5 @@ ENTRYPOINT      ["tail" , "-f", "/dev/null"]
 
 RUN             yum install java-17-openjdk-devel jq -y 
 RUN             mkdir -p ~/.ssh
-COPY            ssh-config ~/.ssh/config
+ADD            ssh-config ~/.ssh/config
 RUN             chmod 600 ~/.ssh/config
