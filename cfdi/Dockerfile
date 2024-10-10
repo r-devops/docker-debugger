@@ -14,7 +14,7 @@ RUN             pip3.11 install ansible botocore boto3 python-jenkins
 ## DB Tools 
 COPY            mongodb.repo /etc/yum.repos.d/mongodb.repo 
 RUN             yum install mongodb-mongosh -y 
-RUN             dnf install https://download.postgresql.org/pub/repos/yum/reporpms/EL-8-x86_64/pgdg-redhat-repo-latest.noarch.rpm -y 
+RUN             dnf install https://download.postgresql.org/pub/repos/yum/reporpms/EL-9-x86_64/pgdg-redhat-repo-latest.noarch.rpm -y 
 RUN             dnf -qy module disable postgresql
 RUN             dnf install postgresql13 -y 
 
