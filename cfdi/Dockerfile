@@ -1,5 +1,5 @@
 FROM            docker.io/redhat/ubi9
-RUN             yum install epel-release -y
+RUN             yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm -y
 
 ## Install General Tools 
 RUN             dnf install vim gcc unzip bind-utils git make telnet -y
