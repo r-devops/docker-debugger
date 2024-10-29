@@ -1,4 +1,4 @@
-FROM            docker.io/redhat/ubi9
+FROM            docker.io/redhat/ubi
 RUN             yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-9.noarch.rpm -y
 
 ## Install General Tools 
@@ -8,8 +8,8 @@ RUN             dnf install vim gcc unzip bind-utils git make netcat -y
 RUN             curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && unzip awscliv2.zip && ./aws/install && rm -rf awscliv2.zip aws
 
 ## Ansible 
-RUN             yum install python3.11-devel python3.11-pip sshpass -y
-RUN             pip3.11 install ansible botocore boto3 python-jenkins
+RUN             yum install python3.12-devel python3.12-pip sshpass -y
+RUN             pip3.12 install ansible ansible-core==2.16 botocore boto3 python-jenkins
 
 ## DB Tools 
 COPY            mongodb.repo /etc/yum.repos.d/mongodb.repo 
